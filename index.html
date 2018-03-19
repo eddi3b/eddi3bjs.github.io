@@ -1,92 +1,25 @@
 <!DOCTYPE html>
-<!-- saved from url=(0042)http://threejsplaygnd.brangerbriz.net/gui/ -->
-<html class="gr__threejsplaygnd_brangerbriz_net"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-		<title>ThreeGUI - WebGLRenderer</title>
+<html>
+	<head>
+		<meta charset="utf-8">
 		<style>
 			body {
+				background-color: #ffffff;
 				margin: 0;
 				overflow: hidden;
-				font-family: 'Lucida Grande', sans-serif;
-				font-size: 11px;
 			}
-
-  			a:link, a:visited{ text-decoration: none; color: #fff; }
-    		a:hover, a:active{ text-decoration: none; color: #e43f8c; outline: 0; border:0px; cursor: pointer; }
-
-			.menu {
-				position: absolute;
-				top:0px; left:0px;
-				height: 22px; width:100%;
-				color:#222; 
-				background-color: #000;
-				font-size: 13px;
-				font-family: 'Lucida Grande', Ariel, sans-serif;
-				padding: 6px 0 2px 10px;
-				margin-top: -2px;
-			}
-			.menu a { color:#777; }
-			.menu a:hover { color:#e43f8c; }
-
-
-			.meshConsole {
-				font-family: Consolas, monaco, monospace;
-				position:  absolute;
-				top:10%; left:100px;
-				opacity: 0.8;
-				font-size: 16px;
-				width: 750px;
-				padding: 24px;
-				max-height: 89%;
-				/*overflow: scroll;*/
-				overflow-x: hidden;
-			}
-
-			#popup {
-
-				position: absolute;
-				color:#fff;
-				padding: 20px 20px 20px 20px;
-				background-color: #000;
-				z-index: 99999999;
-				width: 340px;
-				left:50%; margin-left: -170px;
-				top:50%; margin-top: -100px;
-			}
-
-    	</style>
-	<style type="text/css">.dg ul{list-style:none;margin:0;padding:0;width:100%;clear:both}.dg.ac{position:fixed;top:0;left:0;right:0;height:0;z-index:0}.dg:not(.ac) .main{overflow:hidden}.dg.main{-webkit-transition:opacity 0.1s linear;-o-transition:opacity 0.1s linear;-moz-transition:opacity 0.1s linear;transition:opacity 0.1s linear}.dg.main.taller-than-window{overflow-y:auto}.dg.main.taller-than-window .close-button{opacity:1;margin-top:-1px;border-top:1px solid #2c2c2c}.dg.main ul.closed .close-button{opacity:1 !important}.dg.main:hover .close-button,.dg.main .close-button.drag{opacity:1}.dg.main .close-button{-webkit-transition:opacity 0.1s linear;-o-transition:opacity 0.1s linear;-moz-transition:opacity 0.1s linear;transition:opacity 0.1s linear;border:0;position:absolute;line-height:19px;height:20px;cursor:pointer;text-align:center;background-color:#000}.dg.main .close-button:hover{background-color:#111}.dg.a{float:right;margin-right:15px;overflow-x:hidden}.dg.a.has-save ul{margin-top:27px}.dg.a.has-save ul.closed{margin-top:0}.dg.a .save-row{position:fixed;top:0;z-index:1002}.dg li{-webkit-transition:height 0.1s ease-out;-o-transition:height 0.1s ease-out;-moz-transition:height 0.1s ease-out;transition:height 0.1s ease-out}.dg li:not(.folder){cursor:auto;height:27px;line-height:27px;overflow:hidden;padding:0 4px 0 5px}.dg li.folder{padding:0;border-left:4px solid rgba(0,0,0,0)}.dg li.title{cursor:pointer;margin-left:-4px}.dg .closed li:not(.title),.dg .closed ul li,.dg .closed ul li > *{height:0;overflow:hidden;border:0}.dg .cr{clear:both;padding-left:3px;height:27px}.dg .property-name{cursor:default;float:left;clear:left;width:40%;overflow:hidden;text-overflow:ellipsis}.dg .c{float:left;width:60%}.dg .c input[type=text]{border:0;margin-top:4px;padding:3px;width:100%;float:right}.dg .has-slider input[type=text]{width:30%;margin-left:0}.dg .slider{float:left;width:66%;margin-left:-5px;margin-right:0;height:19px;margin-top:4px}.dg .slider-fg{height:100%}.dg .c input[type=checkbox]{margin-top:9px}.dg .c select{margin-top:5px}.dg .cr.function,.dg .cr.function .property-name,.dg .cr.function *,.dg .cr.boolean,.dg .cr.boolean *{cursor:pointer}.dg .selector{display:none;position:absolute;margin-left:-9px;margin-top:23px;z-index:10}.dg .c:hover .selector,.dg .selector.drag{display:block}.dg li.save-row{padding:0}.dg li.save-row .button{display:inline-block;padding:0px 6px}.dg.dialogue{background-color:#222;width:460px;padding:15px;font-size:13px;line-height:15px}#dg-new-constructor{padding:10px;color:#222;font-family:Monaco, monospace;font-size:10px;border:0;resize:none;box-shadow:inset 1px 1px 1px #888;word-wrap:break-word;margin:12px 0;display:block;width:440px;overflow-y:scroll;height:100px;position:relative}#dg-local-explain{display:none;font-size:11px;line-height:17px;border-radius:3px;background-color:#333;padding:8px;margin-top:10px}#dg-local-explain code{font-size:10px}#dat-gui-save-locally{display:none}.dg{color:#eee;font:11px 'Lucida Grande', sans-serif;text-shadow:0 -1px 0 #111}.dg.main::-webkit-scrollbar{width:5px;background:#1a1a1a}.dg.main::-webkit-scrollbar-corner{height:0;display:none}.dg.main::-webkit-scrollbar-thumb{border-radius:5px;background:#676767}.dg li:not(.folder){background:#1a1a1a;border-bottom:1px solid #2c2c2c}.dg li.save-row{line-height:25px;background:#dad5cb;border:0}.dg li.save-row select{margin-left:5px;width:108px}.dg li.save-row .button{margin-left:5px;margin-top:1px;border-radius:2px;font-size:9px;line-height:7px;padding:4px 4px 5px 4px;background:#c5bdad;color:#fff;text-shadow:0 1px 0 #b0a58f;box-shadow:0 -1px 0 #b0a58f;cursor:pointer}.dg li.save-row .button.gears{background:#c5bdad url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAANCAYAAAB/9ZQ7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNpiYKAU/P//PwGIC/ApCABiBSAW+I8AClAcgKxQ4T9hoMAEUrxx2QSGN6+egDX+/vWT4e7N82AMYoPAx/evwWoYoSYbACX2s7KxCxzcsezDh3evFoDEBYTEEqycggWAzA9AuUSQQgeYPa9fPv6/YWm/Acx5IPb7ty/fw+QZblw67vDs8R0YHyQhgObx+yAJkBqmG5dPPDh1aPOGR/eugW0G4vlIoTIfyFcA+QekhhHJhPdQxbiAIguMBTQZrPD7108M6roWYDFQiIAAv6Aow/1bFwXgis+f2LUAynwoIaNcz8XNx3Dl7MEJUDGQpx9gtQ8YCueB+D26OECAAQDadt7e46D42QAAAABJRU5ErkJggg==) 2px 1px no-repeat;height:7px;width:8px}.dg li.save-row .button:hover{background-color:#bab19e;box-shadow:0 -1px 0 #b0a58f}.dg li.folder{border-bottom:0}.dg li.title{padding-left:16px;background:#000 url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==) 6px 10px no-repeat;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.2)}.dg .closed li.title{background-image:url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlGIWqMCbWAEAOw==)}.dg .cr.boolean{border-left:3px solid #806787}.dg .cr.function{border-left:3px solid #e61d5f}.dg .cr.number{border-left:3px solid #2fa1d6}.dg .cr.number input[type=text]{color:#2fa1d6}.dg .cr.string{border-left:3px solid #1ed36f}.dg .cr.string input[type=text]{color:#1ed36f}.dg .cr.function:hover,.dg .cr.boolean:hover{background:#111}.dg .c input[type=text]{background:#303030;outline:none}.dg .c input[type=text]:hover{background:#3c3c3c}.dg .c input[type=text]:focus{background:#494949;color:#fff}.dg .c .slider{background:#303030;cursor:ew-resize}.dg .c .slider-fg{background:#2fa1d6}.dg .c .slider:hover{background:#3c3c3c}.dg .c .slider:hover .slider-fg{background:#44abda}
-</style></head>
-	<body style="background: rgb(71, 118, 152);" data-gr-c-s-loaded="true">
-
-		<div class="menu">
-			<a href="http://threejsplaygnd.brangerbriz.net/" style="margin-right:50px;">_three.js playGnd</a>
-			<a href="http://threejsplaygnd.brangerbriz.net/gui" style="margin-right:50px;color:#fff">[1] gui</a>
-			<a href="http://threejsplaygnd.brangerbriz.net/editor/editor.html" target="_blank" style="margin-right:50px">[2] editor</a>
-    		<a href="http://threejsplaygnd.brangerbriz.net/archive">[3] archive</a>
-		</div>
-
-
-		<div class="meshConsole" id="mcnsl" style="opacity: 0.2; background: none;">geometry = new THREE.TorusGeometry(200, 7.47, 3, 38, 47.12);<br>material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});<br>mesh = new THREE.Mesh(geometry, material);<br>mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.13;<br>mesh.rotation.y = 4.06;<br>mesh.castShadow = true;<br>scene.add(mesh);<br><br>bg = document.body.style;<br>bg.background = '#477698';<br><br>renderer.shadowMapEnabled = true;<br><br>scene.fog = new THREE.Fog( 0x6fabbe, 1, 8161.48 );ambientLight = new THREE.AmbientLight( 0x000000 );<br>scene.add( ambientLight );<br><br>hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 2.43);<br>scene.add( hemisphereLight );<br><br>directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);<br>directionalLight.position.set( 0, 1, 0 );<br>directionalLight.castShadow = true;<br>scene.add( directionalLight );<br><br>spotLight1 = new THREE.SpotLight( 0xffffff, 0.1 );<br>spotLight1.position.set( 100, 1000, 100 );<br>spotLight1.castShadow = true;<br>spotLight1.shadowDarkness = -0.63;<br>scene.add( spotLight1 );<br><br></div>
-
-
-		<script async="" src="./derp_files/analytics.js"></script><script src="./derp_files/three.min.js"></script>
-		<script src="./derp_files/dat.gui.js"></script>
-		<script src="./derp_files/Detector.js"></script>
-
-		<script src="./derp_files/BBGLgui.js"></script>
-		<script src="./derp_files/BBGLobjs.js"></script>
-		<script src="./derp_files/BBGLfuncz.js"></script>
-		<script src="./derp_files/BBGLgenCode.js"></script>
-
+		</style>
+	</head>
+	<body>
+		
+		<script src="http://threejsplaygnd.brangerbriz.net/js/three.min.js"></script>
+		<script src="http://threejsplaygnd.brangerbriz.net/js/Detector.js"></script>
 		<script>
 
-			// ---------------------------------------------------------------------------------------------------------------------------
-			//
-			//     SETUP >> DRAW
-			//
-			// ---------------------------------------------------------------------------------------------------------------------------
-
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+			
+			var camera, scene, renderer;
+			var geometry, material, mesh;
 
 			function setup() {
 
@@ -95,65 +28,58 @@
 				renderer.setSize( W, H );
 				document.body.appendChild( renderer.domElement );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-
 				camera = new THREE.PerspectiveCamera( 50, W/H, 1, 10000 );
 				camera.position.z = 500;
 
 				scene = new THREE.Scene();
+				
+				
+				// paste your code from the geometryGUI here
+				map = THREE.ImageUtils.loadTexture('../texturez/water.jpg');
+geometry = new THREE.TorusKnotGeometry(200, 195.11, 100, 100, 5, 1, 8.44);
+material = new THREE.MeshLambertMaterial({shading: THREE.SmoothShading, color: 0xdcdcdc, map: map, side: THREE.DoubleSide, transparent: true, opacity: 0.42});
+mesh = new THREE.Mesh(geometry, material);
+map.wrapS = map.wrapT = THREE.RepeatWrapping;
+map.repeat.set( 10, 10 );
+mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.35;
+mesh.position.y = 4.41;
+mesh.rotation.x = 5.82;
+mesh.rotation.y = 1.24;
+scene.add(mesh);
+hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1.99);
+scene.add( hemisphereLight );
 
-				scene.fog = new THREE.Fog( 0xffffff, 1, 100000 );	
 
-				meshObj.make();
-				lights.makeSpot1();
-				lights.makeSpot2();
-				lights.makeAmbient();
-				lights.makeHem();
-				lights.makeDir();
-
-				window.addEventListener( 'resize', onWindowResize, false );
 
 			}
 
-			function onWindowResize() {
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
+			function knot() {
+				scene.remove(mesh);
+				var x = Date.now() *0.001;
+				geometry = new THREE.TorusKnotGeometry(200, 195.11, 100, 100, 5, 1, 8.44);
+				material = new THREE.MeshLambertMaterial({shading: THREE.SmoothShading, color: 0xdcdcdc, map: map, side: THREE.DoubleSide, transparent: true, opacity: 0.42});
+				mesh = new THREE.Mesh(geometry, material);
+				mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.52;
+				scene.add(mesh);	
 			}
-
+			
 			function draw() {
 
 				requestAnimationFrame( draw );
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y = THREE.Math.clamp( camera.position.y + ( - ( mouseY - 200 ) - camera.position.y ) * .05, 50, 1000 );
-				camera.lookAt( scene.position );
+				
+				// experiment with code from the snippets menu here
+				knot();
+				camera.position.x = Math.sin( Date.now() * 0.002 ) * 50;
+				camera.rotation.z = Date.now() * 0.0009;
+
 				renderer.render( scene, camera );
 
 			}
 
-			addDatGui();
 			setup();
 			draw();
 
-		</script><div class="dg ac"><div class="dg main a" style="width: 245px;"><div style="width: 6px; margin-left: -3px; height: 700px; cursor: ew-resize; position: absolute;"></div><ul style="height: auto;"><li class="folder"><div class="dg"><ul><li class="title">code</li><li class="cr function"><div><span class="property-name">select_code</span><div class="c"><div class="button"></div></div></div></li><li class="cr boolean"><div><span class="property-name">background</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr string"><div><span class="property-name">opacity</span><div class="c"><input type="text"></div></div></li></ul></div></li><li class="folder"><div class="dg"><ul><li class="title">mesh</li><li class="cr number"><div><span class="property-name">geometry</span><div class="c"><select><option value="0">cube</option><option value="1">sphere</option><option value="2">icosahedron</option><option value="3">octahedron</option><option value="4">tetrahedron</option><option value="5">cylinder</option><option value="6">torus</option><option value="7">knot</option><option value="8">lathe</option><option value="9">plane</option><option value="10">circle</option><option value="11">ring</option><option value="12">randomConvex</option></select></div></div></li><li class="cr number"><div><span class="property-name">material</span><div class="c"><select><option value="0">normal</option><option value="1">basic</option><option value="2">lambert</option><option value="3">phong</option></select></div></div></li><li class="cr function"><div><span class="property-name">OPEN_GEOMETRY_CNTRL</span><div class="c"><div class="button"></div></div></div></li><li class="cr function"><div><span class="property-name">OPEN_MATERIAL_CNTRL</span><div class="c"><div class="button"></div></div></div></li><li class="cr boolean"><div><span class="property-name">smooth</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr boolean"><div><span class="property-name">castShadow</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr number has-slider"><div><span class="property-name">scale</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 54.041%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">posy</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 0%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">rotx</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 0%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">roty</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 50.7324%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">rotz</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 0%;"></div></div></div></div></li></ul></div></li><li class="folder"><div class="dg"><ul><li class="title">plane</li><li class="cr boolean"><div><span class="property-name">toggleWireframe</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr boolean"><div><span class="property-name">togglePlane</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr number has-slider"><div><span class="property-name">w_scale</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 100%;"></div></div></div></div></li><li class="cr number"><div><span class="property-name">texture</span><div class="c"><select><option value="0">mario</option><option value="1">linen</option><option value="2">crate</option><option value="3">dots</option><option value="4">rock_tile</option><option value="5">water</option><option value="6">wood</option><option value="7">white</option><option value="8">brillo</option><option value="9">soup</option></select></div></div></li><li class="cr number has-slider"><div><span class="property-name">scale</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 100%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">repeat</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 72.7899%;"></div></div></div></div></li></ul></div></li><li class="folder"><div class="dg"><ul class="closed"><li class="title">environment</li><li class="cr string color" style="border-left-color: rgb(71, 118, 152);"><div><span class="property-name">background</span><div class="c"><input type="text" style="outline: none; text-align: center; color: rgb(255, 255, 255); border: 0px; font-weight: bold; text-shadow: rgba(0, 0, 0, 0.7) 0px 1px 1px; background-color: rgb(71, 118, 152);"><div class="selector" style="width: 122px; height: 102px; padding: 3px; background-color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;"><div class="field-knob" style="position: absolute; width: 12px; height: 12px; border: 2px solid rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px; border-radius: 12px; z-index: 1; margin-left: 46.2895px; margin-top: 33.3922px; background-color: rgb(71, 118, 152);"></div><div class="saturation-field" style="width: 100px; height: 100px; border: 1px solid rgb(85, 85, 85); margin-right: 3px; display: inline-block; cursor: pointer; background: -webkit-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(0, 147, 255) 100%);"><div style="width: 100%; height: 100%; background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);"></div></div><div class="hue-field" style="width: 15px; height: 100px; display: inline-block; border: 1px solid rgb(85, 85, 85); cursor: ns-resize; background: -webkit-linear-gradient(top, rgb(255, 0, 0) 0%, rgb(255, 0, 255) 17%, rgb(0, 0, 255) 34%, rgb(0, 255, 255) 50%, rgb(0, 255, 0) 67%, rgb(255, 255, 0) 84%, rgb(255, 0, 0) 100%);"><div class="hue-knob" style="position: absolute; width: 15px; height: 2px; border-right: 4px solid rgb(255, 255, 255); z-index: 1; margin-top: 43.0041px;"></div></div></div></div></div></li><li class="cr boolean"><div><span class="property-name">fog</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr number color" style="border-left-color: rgb(111, 171, 190);"><div><span class="property-name">color</span><div class="c"><input type="text" style="outline: none; text-align: center; color: rgb(0, 0, 0); border: 0px; font-weight: bold; text-shadow: rgba(255, 255, 255, 0.7) 0px 1px 1px; background-color: rgb(111, 171, 190);"><div class="selector" style="width: 122px; height: 102px; padding: 3px; background-color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;"><div class="field-knob" style="position: absolute; width: 12px; height: 12px; border: 2px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px; border-radius: 12px; z-index: 1; margin-left: 34.1765px; margin-top: 18.4902px; background-color: rgb(111, 171, 190);"></div><div class="saturation-field" style="width: 100px; height: 100px; border: 1px solid rgb(85, 85, 85); margin-right: 3px; display: inline-block; cursor: pointer; background: -webkit-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(0, 194, 255) 100%);"><div style="width: 100%; height: 100%; background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);"></div></div><div class="hue-field" style="width: 15px; height: 100px; display: inline-block; border: 1px solid rgb(85, 85, 85); cursor: ns-resize; background: -webkit-linear-gradient(top, rgb(255, 0, 0) 0%, rgb(255, 0, 255) 17%, rgb(0, 0, 255) 34%, rgb(0, 255, 255) 50%, rgb(0, 255, 0) 67%, rgb(255, 255, 0) 84%, rgb(255, 0, 0) 100%);"><div class="hue-knob" style="position: absolute; width: 15px; height: 2px; border-right: 4px solid rgb(255, 255, 255); z-index: 1; margin-top: 46.0784px;"></div></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">near</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 0%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">far</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 81.6129%;"></div></div></div></div></li></ul></div></li><li class="folder"><div class="dg"><ul class="closed"><li class="title">lights</li><li class="cr boolean"><div><span class="property-name">AmbientLight</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr boolean"><div><span class="property-name">HemisphereLight</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr boolean"><div><span class="property-name">DirectionalLight</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr boolean"><div><span class="property-name">SpotLight1</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr boolean"><div><span class="property-name">SpotLight2</span><div class="c"><input type="checkbox" checked="checked"></div></div></li><li class="cr function"><div><span class="property-name">OPEN_LIGHT_CONTROL</span><div class="c"><div class="button"></div></div></div></li></ul></div></li></ul><div class="close-button" style="width: 245px;"></div></div><div class="dg main a" style="width: 245px;"><div style="width: 6px; margin-left: -3px; height: 168px; cursor: ew-resize; position: absolute;"></div><ul style="height: auto;"><li class="cr number has-slider"><div><span class="property-name">radius</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 100%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">tube</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 3.25148%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">radialSegments</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 5.41914%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">tubularSegments</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 94.7368%;"></div></div></div></div></li><li class="cr number has-slider"><div><span class="property-name">arc</span><div class="c"><div><input type="text"></div><div class="slider"><div class="slider-fg" style="width: 100%;"></div></div></div></div></li><li class="cr function"><div><span class="property-name">[X]-CLOSE</span><div class="c"><div class="button"></div></div></div></li></ul><div class="close-button" style="width: 245px;"></div></div><div class="dg main a" style="width: 245px;"><div style="width: 6px; margin-left: -3px; height: 112px; cursor: ew-resize; position: absolute;"></div><ul style="height: auto;"><li class="cr boolean"><div><span class="property-name">wireframe</span><div class="c"><input type="checkbox"></div></div></li><li class="cr boolean"><div><span class="property-name">transparent</span><div class="c"><input type="checkbox"></div></div></li><li class="cr string"><div><span class="property-name">sided</span><div class="c"><select><option value="0">FrontSide</option><option value="1">BackSide</option><option value="2">DoubleSide</option></select></div></div></li><li class="cr function"><div><span class="property-name">[X]-CLOSE</span><div class="c"><div class="button"></div></div></div></li></ul><div class="close-button" style="width: 245px;"></div></div></div><canvas width="3360" height="2012" style="width: 1680px; height: 1006px;"></canvas>
-
+		</script>
 		
-		<script>
-			// FIREFOX SCROLLBARZ ...FUX'N ANNOYING
-			if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-				document.getElementById( 'mcnsl' ).style.width = '100%';
-				document.getElementById( 'mcnsl' ).style.overflowX = 'hidden';
-			}
-		</script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-6098550-26', 'brangerbriz.net');
-		  ga('send', 'pageview');
-
-		</script>
-	
-</body></html>
+	</body>
+</html>
